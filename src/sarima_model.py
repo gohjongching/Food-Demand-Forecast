@@ -9,7 +9,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 from sklearn.metrics import mean_squared_error
 
 # local application/library specific imports
-from .datapipeline import run_datapipeline
+from datapipeline import run_datapipeline
 
 
 class SarimaModel:
@@ -38,8 +38,9 @@ class SarimaModel:
         """
         Fit a SARIMA model to the time series data.
         """
-        self.model = SARIMAX(self.ts, order=self.order,
-                             seasonal_order=self.seasonal_order).fit()
+        self.model = SARIMAX(
+            self.ts, order=self.order, seasonal_order=self.seasonal_order
+        ).fit()
 
         # Save the fitted SARIMA model to a file.
         if model_name is not None:
@@ -64,7 +65,7 @@ class SarimaModel:
         :param n_periods: the number of periods to forecast.
         :return: an array of predicted values based on the in-sample or out-of-sample predictions of the fitted SARIMA model.
         """
-        return self.model.predict(start=len(self.ts), end=len(self.ts)+n_periods-1)
+        return self.model.predict(start=len(self.ts), end=len(self.ts) + n_periods - 1)
 
     def evaluate(self, y_true, y_pred):
         """
@@ -92,15 +93,17 @@ class SarimaModel:
         Plot the test and forecast values of the SARIMA model.
         """
         fig, ax = plt.subplots(figsize=(20, 3))
-        ax.plot(self.test.index, self.test.values.tolist(), label='Actual')
-        ax.plot(self.test.index, self.predictions, label='Forecast')
-        ax.set_xlabel('Date')
-        ax.set_ylabel('Value')
-        ax.set_title('Actual vs. Forecast')
+        ax.plot(self.test.index, self.test.values.tolist(), label="Actual")
+        ax.plot(self.test.index, self.predictions, label="Forecast")
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Value")
+        ax.set_title("Actual vs. Forecast")
         ax.legend()
         plt.show()
 
-    def rolling_forecast(self, order=(1, 1, 1), seasonal_order=(1, 1, 1, 52), seasonal=False):
+    def rolling_forecast(
+        self, order=(1, 1, 1), seasonal_order=(1, 1, 1, 52), seasonal=False
+    ):
         """
         Generate rolling forecasts using the SARIMA model.
 
@@ -114,8 +117,9 @@ class SarimaModel:
 
         # walk-forward validation
         for t in range(len(self.test)):
-            self.model = SARIMAX(lookback, order=self.order,
-                                 seasonal_order=self.seasonal_order)
+            self.model = SARIMAX(
+                lookback, order=self.order, seasonal_order=self.seasonal_order
+            )
             model_fit = self.model.fit()
             output = model_fit.forecast()
             lookahead = output[0]
@@ -144,7 +148,7 @@ def load_data_full():
     df = pd.concat([df_train, df_test])
 
     # Resample the DataFrame by week and sum the 'num_orders' column
-    df_full = df['num_orders'].resample('W').sum()
+    df_full = df["num_orders"].resample("W").sum()
 
     return df_full
 
@@ -163,7 +167,9 @@ def split_data(df):
     return ts, test
 
 
-def sarima_forecast(order=(1, 1, 1), seasonal_order=(1, 1, 1, 52), rolling=True, model_name=None):
+def sarima_forecast(
+    order=(1, 1, 1), seasonal_order=(1, 1, 1, 52), rolling=True, model_name=None
+):
     """
     Generate SARIMA forecasts for the time series data.
 
@@ -190,7 +196,7 @@ def sarima_forecast(order=(1, 1, 1), seasonal_order=(1, 1, 1, 52), rolling=True,
 
     # Evaluate
     eval_metric = model.evaluate(test, forecast)
-    print('Evaluate metric:', eval_metric)
+    print("Evaluate metric:", eval_metric)
 
     # Visualize
     model.plot_forecast()
