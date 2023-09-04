@@ -30,9 +30,9 @@ source: [Food Demand Forecasting by AnalyticsVidhya](https://datahack.analyticsv
 - To experiment and evaluate various time series model in answering the problem statement.
 
 ## Sample dashboard pages
-![Dashboard](img/sample_dashboard.png)
+![image](https://github.com/gohjongching/Food-Demand-Forecast/assets/114969270/9a2e79a2-c6e9-4f2c-9399-79800ce4ff3c)
 
-![Datasets](img/sample_dataset_display.png)
+![image](https://github.com/gohjongching/Food-Demand-Forecast/assets/114969270/84d44d15-b52c-4ef2-844d-9825f26d56f2)
 
 ## EDA and Data Propressing
 ### Basic EDA:
