@@ -1,4 +1,14 @@
 # `Mini Project:` Food Demand Time Series Forecasting
+# About repository
+This repository is for the 5-day AI Singapore Batch 12 Apprenticeship Programme mini project which is jointly contributed by the following apprentices:
+
+- Goh Jong Ching
+- Cerise Choon
+- Loi Xue Zheng
+- Quek Zhi Qiang
+
+The purpose of this mini project is to allow apprentices to work together and explore and experiment open-source tools available on the internet and utilise them to solve an identified problem statement of interest.
+
 
 ## Problem Statement
 Your client is a meal delivery company which operates in multiple cities. They have various fulfillment centers in these cities for dispatching meal orders to their customers. The client wants you to help these centers with demand forecasting for upcoming weeks so that these centers will plan the stock of raw materials accordingly.
@@ -14,6 +24,15 @@ source: [Food Demand Forecasting by AnalyticsVidhya](https://datahack.analyticsv
 
 ## **Main Deliverable:** Forecasting Dashboard using Streamlit 
 **File:** ['Link to Dashboard'](A3P2_components_of_neural_networks.ipynb)
+
+## Key deliverables
+- To develop a useful forecasting dashboard using suitable open-source tools showcasing data insights and model predictions.
+- To experiment and evaluate various time series model in answering the problem statement.
+
+## Sample dashboard pages
+![Dashboard](img/sample_dashboard.png)
+
+![Datasets](img/sample_dataset_display.png)
 
 ## EDA and Data Propressing
 ### Basic EDA:
